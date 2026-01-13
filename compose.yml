@@ -1,15 +1,11 @@
 ---
 services:
-  openvscode:
-    image: openvscode-spring
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: openvscode
-    user: root
+  openvscode-spring:
+    image: ghcr.io/prmiguel/openvscode-spring:main
+    # user: root
     environment:
-      # - PUID=1000
-      # - PGID=1000
+      - PUID=1000
+      - PGID=1000
       - TZ=Etc/UTC
       # - CONNECTION_TOKEN= #optional
       # - CONNECTION_SECRET= #optional
