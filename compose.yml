@@ -1,0 +1,27 @@
+---
+services:
+  openvscode:
+    image: openvscode-spring
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: openvscode
+    user: root
+    environment:
+      # - PUID=1000
+      # - PGID=1000
+      - TZ=Etc/UTC
+      # - CONNECTION_TOKEN= #optional
+      # - CONNECTION_SECRET= #optional
+      - SUDO_PASSWORD=password
+      # - SUDO_PASSWORD_HASH= #optional
+      - DEFAULT_WORKSPACE=/code
+    volumes:
+      - m2:/root/.m2
+      - code:/code
+    ports:
+      - 3000:3000
+    restart: unless-stopped
+volumes:
+  m2:
+  code:
